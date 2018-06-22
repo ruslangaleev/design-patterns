@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Decorator.Models;
+using System;
 
 namespace Decorator
 {
@@ -6,7 +7,18 @@ namespace Decorator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            AbstractPizza pizza = new ItalianPizza();
+
+            // Просто итальянская пицца.
+            Console.WriteLine("Название: {0}", pizza.Name);
+            Console.WriteLine("Цена: {0}", pizza.GetCost());
+
+            // Теперь итальянская пицца с томатами.
+            pizza = new TomatoPizza(pizza);
+            Console.WriteLine("Название: {0}", pizza.Name);
+            Console.WriteLine("Цена: {0}", pizza.GetCost());
+
+            Console.ReadLine();
         }
     }
 }
